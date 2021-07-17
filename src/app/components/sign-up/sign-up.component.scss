@@ -1,0 +1,63 @@
+@use "media";
+@use "variables";
+
+.sign-up-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .sign-up {
+    width: 100%;
+    max-width: 22rem;
+    padding: 1.6rem;
+    border-radius: variables.$border-radius;
+    background-color: var(--color-primary-lighter);
+
+    @include media.xs {
+      padding: 2.5rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      margin-bottom: 0.8rem;
+      color: var(--color-accent);
+    }
+
+    .description {
+      margin-bottom: 2rem;
+    }
+
+    .btn-google {
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      height: 0.125rem;
+      background-color: var(--color-dark-lighter);
+      width: 100%;
+      margin: 2.2rem 0;
+    }
+
+    .log-in {
+      margin: 0;
+      line-height: 1.6;
+
+      a {
+        display: block;
+        font-weight: bold;
+        color: var(--color-accent);
+      }
+    }
+  }
+}

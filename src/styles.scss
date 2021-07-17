@@ -1,0 +1,9 @@
+@use "colors";
+@use "reset";
+@use "utilities";
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-light-lighter);
+  font-family: "Montserrat", sans-serif;
+}

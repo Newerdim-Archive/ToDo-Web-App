@@ -1,0 +1,23 @@
+:root {
+  --color-primary-lighter: #20212c;
+  --color-primary: #18171f;
+  --color-primary-darker: #0d0e12;
+
+  --color-dark-lighter: #2d3339;
+  --color-dark: #212529;
+  --color-dark-darker: #171a1c;
+
+  --color-light-lighter: #ffffff;
+  --color-light: #ececec;
+  --color-light-darker: #c5c5c5;
+
+  --color-accent-lighter: #43dbea;
+  --color-accent: #5bfcfc;
+  --color-accent-darker: #19cfe1;
+
+  --color-muted: #979797;
+
+  --color-error-lighter: hsl(0, 100%, 85%);
+  --color-error: hsl(0, 100%, 65%);
+  --color-error-darker: hsl(0, 100%, 40%);
+}
