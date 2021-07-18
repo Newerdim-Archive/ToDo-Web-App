@@ -1,15 +1,19 @@
-FROM node:12.16.1-alpine As builder
+FROM node:16-alpine As node
 
 WORKDIR /usr/src/app
 
-COPY ./ToDo.WebApp .
+COPY . .
 
 RUN npm install
 
 RUN npm run build --prod
 
-FROM nginx:1.15.8-alpine
+FROM nginx:1.21.1-alpine
 
 EXPOSE 80
 
-COPY --from=builder /usr/src/app/dist/ToDo-WebApp/ /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY --from=node /usr/src/app/dist/ToDo-Web-App/ /usr/share/nginx/html
