@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ToDo-WebApp": {
+    "ToDo-Web-App": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ToDo-WebApp",
+            "outputPath": "dist/ToDo-Web-App",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -78,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ToDo-WebApp:build:production"
+              "browserTarget": "ToDo-Web-App:build:production"
             },
             "development": {
-              "browserTarget": "ToDo-WebApp:build:development"
+              "browserTarget": "ToDo-Web-App:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ToDo-WebApp:build"
+            "browserTarget": "ToDo-Web-App:build"
           }
         },
         "test": {
@@ -113,5 +113,5 @@
       }
     }
   },
-  "defaultProject": "ToDo-WebApp"
+  "defaultProject": "ToDo-Web-App"
 }
