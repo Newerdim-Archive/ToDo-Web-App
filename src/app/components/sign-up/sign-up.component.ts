@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { ErrorResponse } from 'src/app/interfaces/error-response';
 import { AuthService } from 'src/app/services/auth.service';
-import { ErrorResponse } from 'src/app/types/http-responses';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,19 +22,20 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.socialAuthService.authState.subscribe((user) => {
-      this.buttonLoading = true;
 
       if (user) {
+        this.buttonLoading = true;
+
         this.authService.signUpWithGoogle(user.idToken)
           .subscribe(
             () => {
               this.router.navigate(['/']);
             },
             (error: ErrorResponse) => {
-              this.errorMessage = error.message
+              this.errorMessage = error.message;
+              this.buttonLoading = false;
             }
           )
-          .add(() => this.buttonLoading = false);
       }
     });
   }
@@ -43,11 +44,8 @@ export class SignUpComponent implements OnInit {
     this.errorMessage = '';
     this.buttonLoading = true;
     
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.socialAuthService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .catch(() => this.buttonLoading = false);
   }
-
-  signOut(): void {
-    this.socialAuthService.signOut();
-  }
-
 }
