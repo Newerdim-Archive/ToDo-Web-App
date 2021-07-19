@@ -34,12 +34,12 @@
               "node_modules/sweetalert2/dist/sweetalert2.css",
               "src/styles.scss"
             ],
-            "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/scss"
               ]
-            }
+            },
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -107,6 +107,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss"
+              ]
+            },
             "scripts": []
           }
         }
