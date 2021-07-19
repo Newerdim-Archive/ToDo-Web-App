@@ -10,6 +10,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { getSocialAuthServiceConfig } from './helpers/social-auth-service-config';
 import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { AuthCredentialInterceptor } from './interceptors/auth-credential.interceptor';
 
 
 
@@ -33,6 +34,11 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthCredentialInterceptor,
       multi: true
     }
   ],
