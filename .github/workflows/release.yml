@@ -1,4 +1,4 @@
-name: CD
+name: Release
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
-        target: "/home/sebastian/todo-web-app"
+        target: "~/todo-web-app"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
@@ -31,4 +31,4 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: docker-compose -f /home/sebastian/todo-web-app/docker-compose.yml up --build -d
+        script: docker-compose -f ~/todo-web-app/docker-compose.yml up --build -d
