@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthCredentialInterceptor } from './interceptors/auth-credential.interceptor';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 
 
 
@@ -19,7 +20,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
   declarations: [
     AppComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
+    SiteLayoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 
 const routes: Routes = [
-  { path: "sign-up", component: SignUpComponent},
-  { path: "log-in", component: LogInComponent},
+  // Site routes
+  { path: '', component: SiteLayoutComponent, children: [
+    // { path: '', component:  }
+  ]},
+
+  // No layout routes
+  { path: 'sign-up', component: SignUpComponent},
+  { path: 'log-in', component: LogInComponent},
 ];
 
 @NgModule({
