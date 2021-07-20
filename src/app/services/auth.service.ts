@@ -21,4 +21,15 @@ export class AuthService {
 
     return this.httpClient.post<SuccessResponse>(url, model);
   }
+
+  logInWithGoogle(idToken: string): Observable<SuccessResponse>
+  {
+    const url = environment.ApiUrl + 'auth/log-in-with-google';
+
+    const model = {
+      idToken
+    };
+
+    return this.httpClient.post<SuccessResponse>(url, model);
+  }
 }
