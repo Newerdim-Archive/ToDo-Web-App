@@ -11,13 +11,15 @@ import { getSocialAuthServiceConfig } from './helpers/social-auth-service-config
 import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthCredentialInterceptor } from './interceptors/auth-credential.interceptor';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
