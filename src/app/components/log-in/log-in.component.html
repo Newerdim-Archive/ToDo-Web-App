@@ -1,23 +1,23 @@
-<section class="sign-up-container container">
+<section class="log-in-container container">
   <h2>Welcome to <span class="text-accent">ToDo</span>!</h2>
-  <article class="sign-up">
+  <article class="log-in">
     <div class="error-container" *ngIf="errorMessage">
       <p class="message">{{ errorMessage }}</p>
     </div>
-    <h1>Sign up</h1>
-    <p class="text-muted description">Create free account</p>
+    <h1>Log in</h1>
+    <p class="text-muted description">Log in into existing account</p>
     <button
       class="btn-google"
-      (click)="signUpWithGoogle()"
+      (click)="logInWithGoogle()"
       [ngClass]="buttonLoading ? 'loading' : ''"
     >
       <app-icon name="google"></app-icon>
-      Sign Up With Google
+      Log In With Google
     </button>
     <div class="divider"></div>
-    <p class="log-in">
-      Already have an account?
-      <a href="log-in">Log In</a>
+    <p class="sign-up">
+      Not a member?
+      <a href="sign-up">Sign up now</a>
     </p>
   </article>
 </section>
