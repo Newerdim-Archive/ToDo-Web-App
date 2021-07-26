@@ -11,30 +11,19 @@ import { getSocialAuthServiceConfig } from './helpers/social-auth-service-config
 import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthCredentialInterceptor } from './interceptors/auth-credential.interceptor';
-import { LogInComponent } from './components/log-in/log-in.component';
-import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { NavComponent } from './components/nav/nav.component';
-import { ProfileDropdownComponent } from './components/profile-dropdown/profile-dropdown.component';
-import { IconComponent } from './components/icon/icon.component';
-import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent,
-    LogInComponent,
-    SiteLayoutComponent,
-    NavbarComponent,
-    NavComponent,
-    ProfileDropdownComponent,
-    IconComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -45,19 +34,14 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true,
+      multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthCredentialInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UnauthorizedInterceptor,
-      multi: true,
-    },
+      multi: true
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
