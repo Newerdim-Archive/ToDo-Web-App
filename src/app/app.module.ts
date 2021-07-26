@@ -50,8 +50,13 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthCredentialInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
