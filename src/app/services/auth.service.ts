@@ -5,31 +5,40 @@ import { environment } from 'src/environments/environment';
 import { SuccessResponse } from '../interfaces/success-response';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  signUpWithGoogle(idToken: string): Observable<SuccessResponse>
-  {
+  signUpWithGoogle(idToken: string): Observable<SuccessResponse> {
     const url = environment.ApiUrl + 'auth/sign-up-with-google';
 
     const model = {
-      idToken
+      idToken,
     };
 
     return this.httpClient.post<SuccessResponse>(url, model);
   }
 
-  logInWithGoogle(idToken: string): Observable<SuccessResponse>
-  {
+  logInWithGoogle(idToken: string): Observable<SuccessResponse> {
     const url = environment.ApiUrl + 'auth/log-in-with-google';
 
     const model = {
-      idToken
+      idToken,
     };
 
     return this.httpClient.post<SuccessResponse>(url, model);
+  }
+
+  logOut(): Observable<SuccessResponse> {
+    const url = environment.ApiUrl + 'auth/log-out';
+
+    return this.httpClient.get<SuccessResponse>(url);
+  }
+
+  isAuthenticated(): Observable<SuccessResponse> {
+    const url = environment.ApiUrl + 'auth/is-authenticated';
+
+    return this.httpClient.get<SuccessResponse>(url);
   }
 }
