@@ -1,5 +1,3 @@
-import { BaseResponse } from "./base-response";
+import { BaseResponse } from './base-response';
 
-export interface SuccessResponse extends BaseResponse {
-    
-}
+export interface SuccessResponse extends BaseResponse {}

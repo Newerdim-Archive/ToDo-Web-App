@@ -13,8 +13,11 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthCredentialInterceptor } from './interceptors/auth-credential.interceptor';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
-
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavComponent } from './components/nav/nav.component';
+import { ProfileDropdownComponent } from './components/profile-dropdown/profile-dropdown.component';
+import { IconComponent } from './components/icon/icon.component';
+import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,16 @@ import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component
     SignUpComponent,
     LogInComponent,
     SiteLayoutComponent,
+    NavbarComponent,
+    NavComponent,
+    ProfileDropdownComponent,
+    IconComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -38,7 +45,7 @@ import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
@@ -46,6 +53,6 @@ import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
