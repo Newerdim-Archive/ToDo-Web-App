@@ -4,78 +4,88 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { ErrorResponse } from '../interfaces/error-response';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+
   constructor() {}
 
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.error instanceof ErrorEvent) {
-          return this.handleClientSideError();
-        }
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return next.handle(request)
+      .pipe(
+        catchError(error => {
+          const isHttpError = error instanceof HttpErrorResponse;
 
-        if (error.status === 0) {
-          return this.handleServerUnavailable();
-        }
+          if (!isHttpError)
+          {
+            return this.handleUnexpectedError();
+          }
 
-        if (!error.error && error.status === 404) {
-          return this.handleEndpointNotExist();
-        }
+          if (error.status === 0)
+          {
+            return this.handleServerUnavailable();
+          }
 
-        if (error.status >= 500) {
-          return this.handleInternalSeverError();
-        }
+          if (!error.error && error.status === 404)
+          {
+            return this.handleEndpointNotExist();
+          }
 
-        return this.handleErrorResponse(error);
-      })
-    );
+          if (error.status >= 500)
+          {
+            return this.handleInternalSeverError();
+          }
+          
+          return this.handleErrorResponse(error);          
+        })
+      )
   }
 
-  handleServerUnavailable(): Observable<never> {
+  handleServerUnavailable(): Observable<never>
+  {
     let errorResponse: ErrorResponse = {
-      message: 'Server is unavailable right now. Try again later',
-    };
+      message: 'Server is unavailable right now. Try again later'
+    }
 
-    return throwError(errorResponse);
+    return throwError(errorResponse)
   }
 
-  handleEndpointNotExist(): Observable<never> {
+  handleEndpointNotExist(): Observable<never>
+  {
     let errorResponse: ErrorResponse = {
-      message: 'Endpoint not exist',
-    };
+      message: 'Endpoint not exist'
+    }
 
-    return throwError(errorResponse);
+    return throwError(errorResponse)
   }
 
-  handleInternalSeverError(): Observable<never> {
+  handleInternalSeverError(): Observable<never>
+  {
     let errorResponse: ErrorResponse = {
-      message: 'Something gone wrong in server',
-    };
+      message: 'Something gone wrong in server'
+    }
 
-    return throwError(errorResponse);
+    return throwError(errorResponse)
   }
 
-  handleErrorResponse(error: HttpErrorResponse): Observable<never> {
+  handleErrorResponse(error: HttpErrorResponse): Observable<never>
+  {
     let errorResponse: ErrorResponse = error.error;
 
-    return throwError(errorResponse);
+    return throwError(errorResponse)
   }
 
-  handleClientSideError(): Observable<never> {
+  handleUnexpectedError(): Observable<never>
+  {
     let errorResponse: ErrorResponse = {
-      message: 'Unexpected error appeared',
-    };
+      message: 'Unexpected error appeared'
+    }
 
-    return throwError(errorResponse);
+    return throwError(errorResponse)
   }
 }
