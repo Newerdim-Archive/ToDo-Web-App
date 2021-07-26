@@ -1,0 +1,30 @@
+<div class="profile-dropdown-container">
+  <button class="profile-dropdown-button" (click)="toggleDropdown()">
+    <span class="username">
+      {{ profile.username }}
+    </span>
+    <app-icon name="user"></app-icon>
+  </button>
+  <section class="profile-dropdown" [ngClass]="isOpenDropdown ? 'active' : ''">
+    <div class="profile-info-container">
+      <img
+        class="profile-picture"
+        src="assets/img/default-profile-picture.jpg"
+        alt="Profile picture"
+      />
+      <div class="profile-info">
+        <p class="username">{{ profile.username }}</p>
+        <p class="email text-muted">{{ profile.email }}</p>
+      </div>
+    </div>
+    <button class="settings">
+      <app-icon name="settings"></app-icon>
+      <span>Settings</span>
+    </button>
+    <div class="divider"></div>
+    <button class="log-out" (click)="logOut()">
+      <app-icon name="log-out"></app-icon>
+      <span>Log out</span>
+    </button>
+  </section>
+</div>
