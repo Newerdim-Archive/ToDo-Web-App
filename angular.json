@@ -31,7 +31,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/sweetalert2/dist/sweetalert2.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
